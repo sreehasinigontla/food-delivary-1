@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlameBite — Delicious Food, Delivered To Your Door!</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Toast Notification Banner (Replaces native alerts) -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <i class="fas fa-circle-check"></i>
+        <span id="toast-message">Added to cart!</span>
+    </div>
+
+    <!-- ==================== 1. NAVIGATION BAR ==================== -->
+    <header class="navbar" id="top">
+        <div class="container nav-inner">
+            <!-- Brand Logo -->
+            <a href="#home" class="brand-logo">
+                <span class="logo-icon"><i class="fas fa-utensils"></i></span>
+                <span class="logo-text">Flame<span>Bite</span></span>
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation Links & Actions -->
+            <div class="nav-collapse" id="nav-collapse">
+                <nav class="nav-links" aria-label="Primary Navigation">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#restaurants" class="nav-link">Restaurants</a>
+                    <a href="#menu" class="nav-link">Menu</a>
+                    <a href="#offers" class="nav-link">Offers</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Search Bar -->
+                <div class="nav-search" role="search">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <input type="text" id="nav-search-input" placeholder="Search food or restaurants..." aria-label="Search food or restaurants">
+                    <button type="button" id="clear-search-btn" class="clear-search-btn" title="Clear search" aria-label="Clear search">&times;</button>
+                </div>
+
+                <!-- Action Buttons: Login & Cart -->
+                <div class="nav-actions">
+                    <button type="button" class="btn-auth" id="open-auth-btn">
+                        <i class="far fa-user"></i>
+                        <span>Login / Sign Up</span>
+                    </button>
+
+                    <button type="button" class="btn-cart" id="open-cart-btn" aria-label="Open Shopping Cart">
+                        <i class="fas fa-bag-shopping"></i>
+                        <span class="cart-label">Cart</span>
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================== 2. HERO SECTION ==================== -->
+        <section class="hero" id="home">
+            <div class="hero-bg-overlay"></div>
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-pill">
+                        <i class="fas fa-fire-flame-curved"></i>
+                        <span>Fastest Hyperlocal Delivery Across India</span>
+                    </div>
+                    <h1 class="hero-title">Delicious Food, <span>Delivered</span> To Your Door!</h1>
+                    <p class="hero-subtitle">Order your favorite meals from the best restaurants near you.</p>
+
+                    <!-- Location & Search Form -->
+                    <form class="hero-search-box" id="hero-search-form">
+                        <div class="hero-input-group location-field">
+                            <i class="fas fa-location-dot"></i>
+                            <input type="text" id="hero-location-input" placeholder="Enter your delivery location (e.g., Vijayawada, Bengaluru)..." aria-label="Delivery location">
+                        </div>
+                        <div class="hero-input-group food-field">
+                            <i class="fas fa-bowl-food"></i>
+                            <input type="text" id="hero-food-input" placeholder="Craving biryani, pizza, burger..." aria-label="Search dish or restaurant">
+                        </div>
+                        <button type="submit" class="btn btn-primary hero-search-btn">
+                            <i class="fas fa-search"></i> Search Food
+                        </button>
+                    </form>
+
+                    <!-- Quick Stats -->
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <strong>500+</strong>
+                            <span>Top Restaurants</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <strong>25 Mins</strong>
+                            <span>Avg. Delivery</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <strong>4.9 ★</strong>
+                            <span>Customer Rating</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attractive Food Showcase Cards on Right -->
+                <div class="hero-visual">
+                    <div class="hero-main-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80"
+                            alt="Freshly baked artisan pizza and feast"
+                            onerror="this.src='https://placehold.co/600x450/FFF1F2/DC2626?text=Fresh+Hot+Meals'"
+                        >
+                        <div class="floating-offer-tag">
+                            <span class="tag-highlight">50% OFF</span>
+                            <span>First Order Code: <strong>FOOD50</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="hero-mini-card mini-top">
+                        <img
+                            src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=300&q=80"
+                            alt="Royal Dum Biryani"
+                            onerror="this.src='https://placehold.co/120x120/FEF3C7/EA580C?text=Biryani'"
+                        >
+                        <div>
+                            <h4>Hyderabadi Biryani</h4>
+                            <p>₹199 • 4.9 ★</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-mini-card mini-bottom">
+                        <i class="fas fa-bolt"></i>
+                        <div>
+                            <h4>Live Order Tracking</h4>
+                            <p>Hot &amp; fresh in 25 mins</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 3. FOOD CATEGORIES ==================== -->
+        <section class="section categories-section" id="categories">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Explore Cravings</span>
+                    <h2 class="section-title">Food Categories</h2>
+                    <p class="section-desc">Tap any category to filter dishes and explore mouth-watering flavors.</p>
+                </div>
+
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Rendered dynamically via JS or static cards with interactive filter -->
+                    <button type="button" class="category-card active" data-category="All">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="All Dishes" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=All'">
+                        </div>
+                        <span class="category-name">All Meals ✨</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Pizza">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80" alt="Pizza" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Pizza'">
+                        </div>
+                        <span class="category-name">Pizza 🍕</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Burgers">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Burgers" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Burgers'">
+                        </div>
+                        <span class="category-name">Burgers 🍔</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Biryani">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=400&q=80" alt="Biryani" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Biryani'">
+                        </div>
+                        <span class="category-name">Biryani 🍛</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Chinese">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80" alt="Chinese" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Chinese'">
+                        </div>
+                        <span class="category-name">Chinese 🍜</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Desserts">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" alt="Desserts" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Desserts'">
+                        </div>
+                        <span class="category-name">Desserts 🍰</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Ice Cream">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=400&q=80" alt="Ice Cream" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Ice+Cream'">
+                        </div>
+                        <span class="category-name">Ice Cream 🍨</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Sandwiches">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80" alt="Sandwiches" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Sandwiches'">
+                        </div>
+                        <span class="category-name">Sandwiches 🥪</span>
+                    </button>
+
+                    <button type="button" class="category-card" data-category="Healthy Food">
+                        <div class="category-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80" alt="Healthy Food" onerror="this.src='https://placehold.co/200x200/FFEDD5/EA580C?text=Healthy'">
+                        </div>
+                        <span class="category-name">Healthy Food 🥗</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 4. POPULAR RESTAURANTS ==================== -->
+        <section class="section restaurants-section" id="restaurants">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Curated Kitchens</span>
+                    <h2 class="section-title">Popular Restaurants</h2>
+                    <p class="section-desc">Top-rated dining spots loved by foodies for consistency, taste, and speed.</p>
+                </div>
+
+                <div class="restaurants-grid" id="restaurants-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 5. POPULAR DISHES ==================== -->
+        <section class="section dishes-section" id="menu">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Chef Specials</span>
+                    <h2 class="section-title">Popular Dishes</h2>
+                    <p class="section-desc" id="active-filter-label">Showing all signature dishes across top restaurants.</p>
+                </div>
+
+                <div class="dishes-grid" id="dishes-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="empty-state" id="empty-dishes-state" style="display: none;">
+                    <i class="fas fa-utensils"></i>
+                    <h3>No matching dishes found</h3>
+                    <p>Try searching for another dish or reset the category filter.</p>
+                    <button type="button" class="btn btn-primary" id="reset-filters-btn">Show All Dishes</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 6. SPECIAL OFFERS SECTION ==================== -->
+        <section class="section offers-section" id="offers">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Hot Deals</span>
+                    <h2 class="section-title">Special Offers</h2>
+                    <p class="section-desc">Save more on every craving with exclusive promo codes and delivery perks.</p>
+                </div>
+
+                <div class="offers-grid">
+                    <div class="offer-card offer-first-order">
+                        <span class="offer-badge">NEW USER DEAL</span>
+                        <h3>Get 50% OFF on Your First Order!</h3>
+                        <p>Kickstart your FlameBite journey with flat 50% discount up to ₹150 on your very first meal order.</p>
+                        <div class="offer-footer">
+                            <span class="promo-code">Use Code: FOOD50</span>
+                            <button type="button" class="btn-copy-code" data-code="FOOD50">Copy Code</button>
+                        </div>
+                    </div>
+
+                    <div class="offer-card offer-free-delivery">
+                        <span class="offer-badge">ZERO DELIVERY FEE</span>
+                        <h3>Free Delivery on Orders Above ₹299</h3>
+                        <p>Fill your cart with starters, mains, and desserts worth ₹299 or more and enjoy doorstep delivery free.</p>
+                        <div class="offer-footer">
+                            <span class="promo-code">Auto-Applied at Cart</span>
+                            <a href="#menu" class="btn-offer-link">Order Now &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card offer-code-highlight">
+                        <span class="offer-badge">MEGA SAVER</span>
+                        <h3>Use Code: FOOD50</h3>
+                        <p>Unlock instant savings on biryanis, pizzas, burgers, and Chinese combos from partner restaurants.</p>
+                        <div class="offer-footer">
+                            <span class="promo-code">Code: FOOD50</span>
+                            <button type="button" class="btn-copy-code" data-code="FOOD50">Copy Code</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 7. WHY CHOOSE US? ==================== -->
+        <section class="section why-us-section" id="why-choose-us">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">The FlameBite Promise</span>
+                    <h2 class="section-title">Why Choose Us?</h2>
+                    <p class="section-desc">We combine speed, hygiene, and trusted kitchen partners to elevate every meal.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon icon-orange">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <h3>Fast Delivery</h3>
+                        <p>Smart route dispatch ensures your hot meals arrive fresh and right on schedule.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon icon-red">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Fresh Ingredients</h3>
+                        <p>Partner kitchens use farm-fresh produce, quality spices, and daily-prepared batters.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon icon-dark">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Best Restaurants</h3>
+                        <p>Handpicked local favorites and acclaimed culinary brands with strict hygiene checks.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon icon-amber">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Encrypted UPI, cards, net banking, and cash-on-delivery options with zero hassle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 8. CUSTOMER REVIEWS ==================== -->
+        <section class="section reviews-section" id="reviews">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Happy Diners</span>
+                    <h2 class="section-title">Customer Reviews</h2>
+                    <p class="section-desc">See what food lovers across India say about ordering with FlameBite.</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <article class="review-card">
+                        <div class="review-top">
+                            <img
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+                                alt="Ananya Sharma"
+                                class="reviewer-avatar"
+                                onerror="this.src='https://placehold.co/80x80/FFEDD5/EA580C?text=AS'"
+                            >
+                            <div>
+                                <h4>Ananya Sharma</h4>
+                                <span>Bengaluru</span>
+                            </div>
+                            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        </div>
+                        <p class="review-text">"The Chicken Biryani arrived piping hot in under 25 minutes! Using FOOD50 on my first order made it an absolute steal."</p>
+                    </article>
+
+                    <article class="review-card">
+                        <div class="review-top">
+                            <img
+                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                                alt="Rohan Verma"
+                                class="reviewer-avatar"
+                                onerror="this.src='https://placehold.co/80x80/FEE2E2/DC2626?text=RV'"
+                            >
+                            <div>
+                                <h4>Rohan Verma</h4>
+                                <span>Hyderabad</span>
+                            </div>
+                            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        </div>
+                        <p class="review-text">"Super clean interface, accurate delivery times, and crisp burgers every single time. Easily my go-to food app for late-night study sessions."</p>
+                    </article>
+
+                    <article class="review-card">
+                        <div class="review-top">
+                            <img
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+                                alt="Meera Nair"
+                                class="reviewer-avatar"
+                                onerror="this.src='https://placehold.co/80x80/FEF3C7/D97706?text=MN'"
+                            >
+                            <div>
+                                <h4>Meera Nair</h4>
+                                <span>Chennai</span>
+                            </div>
+                            <div class="review-stars" aria-label="4.8 out of 5 stars">★★★★☆</div>
+                        </div>
+                        <p class="review-text">"Love the variety of healthy bowls alongside indulgent chocolate cakes. Packaging is neat and payments are seamless."</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 9. NEWSLETTER SECTION ==================== -->
+        <section class="section newsletter-section" id="newsletter">
+            <div class="container">
+                <div class="newsletter-box">
+                    <div class="newsletter-content">
+                        <span class="newsletter-badge"><i class="fas fa-envelope-open-text"></i> Weekly Feast Alerts</span>
+                        <h2>Get Special Offers in Your Inbox!</h2>
+                        <p>Subscribe for flash discounts, secret promo codes, and new restaurant launches.</p>
+                    </div>
+
+                    <form class="newsletter-form" id="newsletter-form">
+                        <div class="newsletter-input-wrap">
+                            <input
+                                type="email"
+                                id="newsletter-email"
+                                placeholder="Enter your email address..."
+                                aria-label="Email address for newsletter"
+                                required
+                            >
+                            <button type="submit" class="btn btn-dark">
+                                Subscribe <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <p class="newsletter-feedback" id="newsletter-feedback" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== 10. FOOTER ==================== -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="brand-logo footer-logo">
+                        <span class="logo-icon"><i class="fas fa-utensils"></i></span>
+                        <span class="logo-text">Flame<span>Bite</span></span>
+                    </a>
+                    <p>Delivering joy, spice, and comfort from your favorite neighborhood kitchens straight to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="#top" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#top" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#top" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#top" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#restaurants">Restaurants</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#offers">Offers</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-location-dot"></i> MG Road, Food Tech Hub, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> support@flamebite.in</li>
+                        <li><i class="fas fa-clock"></i> Open Daily: 7:00 AM – 11:30 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FlameBite Food Delivery. All rights reserved.</p>
+                <p>Crafted with <i class="fas fa-heart"></i> for food lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SLIDE-OUT SHOPPING CART DRAWER ==================== -->
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+        <div class="cart-header">
+            <h3><i class="fas fa-bag-shopping"></i> Your Order Cart</h3>
+            <button type="button" class="close-btn" id="close-cart-btn" aria-label="Close Cart">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cart-items-container">
+            <!-- Cart items rendered dynamically -->
+        </div>
+
+        <div class="cart-footer" id="cart-footer">
+            <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">₹0</strong>
+            </div>
+            <div class="cart-summary-row">
+                <span>Delivery Fee <small>(Free above ₹299)</small></span>
+                <strong id="cart-delivery">₹0</strong>
+            </div>
+            <div class="cart-summary-row total-row">
+                <span>Total Payable</span>
+                <strong id="cart-total">₹0</strong>
+            </div>
+            <button type="button" class="btn btn-primary checkout-btn" id="checkout-btn">
+                Place Order <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ==================== LOGIN / SIGN UP MODAL ==================== -->
+    <div class="modal" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+        <div class="modal-card">
+            <button type="button" class="close-btn modal-close" id="close-auth-btn" aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <span class="modal-badge"><i class="fas fa-utensils"></i> FlameBite Account</span>
+                <h3 id="auth-modal-title">Welcome Back!</h3>
+                <p>Sign in to save addresses, track orders, and unlock FOOD50.</p>
+            </div>
+
+            <form id="auth-form" class="modal-form">
+                <div class="form-group">
+                    <label for="auth-email">Email or Phone Number</label>
+                    <input type="text" id="auth-email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="auth-password">Password</label>
+                    <input type="password" id="auth-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary modal-submit-btn">Continue to FlameBite</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
